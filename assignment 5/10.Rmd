@@ -1,0 +1,30 @@
+---
+title: ''
+author: "Sun, Hao-Che"
+date: "2018年10月13日"
+output: word_document
+---
+
+
+```{r}
+library(ISLR)
+car=Carseats
+attach(car)
+pr=lm(Sales~Price+Urban+US)
+summary(pr)
+```
+
+```{r}
+summary(car)
+```
+```{r}
+n=lm(Sales~Price+US)
+summary(n)
+```
+```{r}
+confint(n)
+```
+```{r}
+par(mfrow=c(2,2))
+plot(n)
+```

@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}   %加這個就可以設定字體
+\usepackage{xeCJK}       %讓中英文字體分開設置
+\setmainfont{Times New Roman}
+\setCJKmainfont{標楷體} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     %這兩行一定要加，中文才能自動換行
+\usepackage{amsmath, amsthm, amssymb} %引入數學符號的套件，例如實數R、定理Thm...
+\usepackage{graphicx}                 %現在, 假設我們要插入 pic.png 這個圖檔, 使用
+%\title{我是標題}
+%\author{我是作者}
+%\date{} %不要日期
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{color,xcolor}
+\usepackage{listings}
+\usepackage{array,booktabs}   %這三個為表格使用的套件
+\usepackage{textpos}
+\usepackage{float}
+\usepackage{listings}
+
+\title{Statistical learning assignment 5- chapter 3}
+\author{孫浩哲 \hspace{0.7cm} M072040002}
+\date{October 18, 2018}
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[2.]\ \\
+The concepts of KNN classifier\&KNN regression are similar.\\[2ex]
+The main difference between the two methods is that the output of KNN classifier is qualitative, but the output of another one is quantitative. 
+\item[7.]\ \\
+\begin{align*}
+R^2=\frac{SSR}{SST}
+&=\frac{\sum_{i=1}^{n}(\hat{y_{i}}-\bar{y})^2}{\sum_{i=1}^{n}(y_{i}-\bar{y})^2}\\
+&=\frac{\sum_{i=1}^{n}(b_{0}+b_{1}x_{i}-\bar{y})^2}{\sum_{i=1}^{n}(y_{i}-\bar{y})^2}\\
+&=\frac{\sum_{i=1}^{n}(\bar{y}-b_{1}\bar{x}+b_{1}x_{i}-\bar{y})^2}{\sum_{i=1}^{n}(y_{i}-\bar{y})^2}\\
+&=\frac{\sum_{i=1}^{n}(b_{1}x_{i}-b_{1}\bar{x})^2}{\sum_{i=1}^{n}(y_{i}-\bar{y})^2}\\
+&=b_{1}^2\frac{S_{xx}}{s_{yy}}=(\frac{S_{xy}}{S_{xx}})^2\frac{S_{xx}}{s_{yy}}\\
+&=\frac{(S_{xy})^2}{S_{xx}{S_{yy}}}=[cor(x,y)]^2
+\end{align*}
+\end{itemize}
+\end{document}

@@ -1,0 +1,95 @@
+---
+title: ""
+author: "Sun, Hao-Che"
+date: "2018年10月27日"
+output: word_document
+---
+#10.
+#(a)
+```{r}
+library(ISLR)
+summary(Weekly)
+```
+```{r}
+plot(Weekly)
+```
+#(b)
+```{r}
+attach(Weekly)
+logfit=glm(Direction~Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + Volume,data=Weekly,family=binomial)
+summary(logfit)
+```
+#(c)
+```{r}
+prob = predict(logfit, type = "response")
+pred = rep("Down", length(prob))
+pred[prob > 0.5] = "Up"
+table(pred, Direction)
+```
+#(d)
+```{r}
+attach(Weekly)
+delet=Weekly[Year<2009,]
+ninten=Weekly[Year>=2009,]
+fit=glm(Direction~Lag2,data=delet,family=binomial)
+pre=predict(fit,ninten,type="response")
+cla=rep("up",length(pre))
+cla[pre<0.5]="down"
+d910=ninten[,9]
+table(cla,d910)
+```
+
+#(e)
+```{r}
+library(MASS)
+LD=lda(Direction~Lag2,data=Weekly)
+LDP=predict(LD,ninten)
+table(LDP$class,d910)
+```
+#(f)
+```{r}
+QD=qda(Direction~Lag2,data=Weekly)
+QDP=predict(QD,ninten)  
+table(QDP$class,d910)  
+```
+#(g)
+```{r}
+library(class)
+train=as.matrix(delet$Lag2)
+test=as.matrix(ninten$Lag2)
+d=delet[,9]
+set.seed(1)
+K=knn(train,test,d,k=1)
+table(K,d910)
+```
+#{i}
+#############Logistic##############
+```{r}
+tt=glm(Direction~Lag1+Lag2+Lag3,family=binomial,data=Weekly)
+p=predict(tt,ninten,type="response")
+forca=rep("down",length(p))
+forca[p>0.5]="up"
+table(forca,d910)
+```
+#############LDA#################
+```{r}
+ldda=lda(Direction~Lag1+Lag2+Lag3,data=Weekly)
+re=predict(ldda,ninten)
+table(re$class,d910)
+```
+###########QDA###################
+```{r}
+qdda=qda(Direction~Lag1+Lag2+Lag3,data=Weekly)
+qq=predict(qdda,ninten)
+table(qq$class,d910)
+```
+##########KNN(K=10)##############
+```{r}
+k10=knn(train,test,d,k=10)
+table(k10,d910)
+```
+#########KNN(K=100)#############
+```{r}
+k100=knn(train,test,d,k=100)
+table(k100,d910)
+```

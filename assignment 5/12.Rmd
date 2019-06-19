@@ -1,0 +1,29 @@
+---
+title: "Untitled"
+author: "Sun, Hao-Che"
+date: "2018年10月13日"
+output: word_document
+---
+
+```{r}
+set.seed(1)
+x=sample(seq(1,50.5,0.1),100)
+y=5*x
+m1=lm(y~x+0)
+m2=lm(x~y+0)
+summary(m1)
+```
+```{r}
+summary(m2)
+```
+```{r}
+x2=c(1:100)
+y2=sample(x2,100)
+isTRUE(sum(x2^2)==sum(y2^2))
+fi=lm(y2~x2+0)
+fi2=lm(x2~y2+0)
+summary(fi)
+```
+```{r}
+summary(fi2)
+```

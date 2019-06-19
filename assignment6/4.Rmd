@@ -1,0 +1,29 @@
+---
+title: ''
+author: "Sun, Hao-Che"
+date: "2018年10月20日"
+output: word_document
+---
+
+#4.1
+$$P(X)=\frac{e^{\beta_{0}+\beta_{1}X}}{1+e^{\beta_{0}+\beta_{1}X}}$$
+$$\frac{P(X)}{1-P(X)}=\frac{\frac{e^{\beta_{0}+\beta_{1}X}}{1+e^{\beta_{0}+\beta_{1}X}}}{\frac{1}{1+e^{\beta_{0}+\beta_{1}X}}}=e^{\beta_{0}+\beta_{1}X}$$
+#4.2
+$$P_{k}(x)=\frac{\pi_{k}exp\{-{\frac{(x-\mu_{k})^2}{2\sigma^2}}\}}{\sum_{i=1}^{K}\pi_{i}exp\{-{\frac{(x-\mu_{i})^2}{2\sigma^2}}\}}$$
+$$\delta_{k}(x)=x\frac{\mu_{k}}{\sigma^2}-\frac{\mu_{k}^2}{2\sigma^2}+\log(\pi_{k})$$
+Let\ $\delta_{k}(x)>\delta_{i}(x)$, $\forall i\neq k$\\
+Since exponential function is monotonely increasing\\
+$$
+   \exp(\delta_{k}(x))>\exp(\delta_{i}(x))\\
+  \Rightarrow\pi_{k}\exp(\frac{\mu_{k}}{\sigma^2}-\frac{\mu_{k}^2}{2\sigma^2})>\pi_{i}\exp(\frac{\mu_{i}}{\sigma^2}-\frac{\mu_{i}^2}{2\sigma^2})
+$$
+thus we prove that maximizing\ $\delta_{k}(x)$ is equivalent to maximizing\ $p_{k}(x)$ \\
+
+#4.3
+$$P_{k}(x)=\frac{\pi_{k}\frac{1}{\sqrt{2\pi}\sigma_{k}}\exp\{-{\frac{(x-\mu_{k})^2}{2\sigma_{k}^2}}\}}{\sum_{i=1}^{K}\pi_{i}\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp\{-{\frac{(x-\mu_{i})^2}{2\sigma_{i}^2}}\}}$$
+Since we assume that the\ $\sigma^2$ of each class is not same, so we can't remove the\ $\sigma^2$.
+$$
+\delta_{k}(x)=\log(P_{k}(x))+\log(\sum_{i=1}^{K}\pi_{i}\frac{1}{\sqrt{2\pi}\sigma_{i}}\exp\{-{\frac{(x-\mu_{i})^2}{2\sigma_{i}^2}}\})
+=\log(\pi_{k})-\log(\sqrt{2\pi}\sigma_{k})-\frac{(x-\mu_{k})^2}{2\sigma_{k}^2}
+$$
+It is not linear, and we can see that it is quadratic.

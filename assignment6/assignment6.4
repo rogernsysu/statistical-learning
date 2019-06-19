@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}   %加這個就可以設定字體
+\usepackage{xeCJK}       %讓中英文字體分開設置
+\setmainfont{Times New Roman}
+\setCJKmainfont{標楷體} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     %這兩行一定要加，中文才能自動換行
+\usepackage{amsmath, amsthm, amssymb} %引入數學符號的套件，例如實數R、定理Thm...
+\usepackage{graphicx}                 %現在, 假設我們要插入 pic.png 這個圖檔, 使用
+%\title{我是標題}
+%\author{我是作者}
+%\date{} %不要日期
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{color,xcolor}
+\usepackage{listings}
+\usepackage{array,booktabs}   %這三個為表格使用的套件
+\usepackage{textpos}
+\usepackage{float}
+\usepackage{listings}
+
+\begin{document}
+\begin{itemize}
+\item[4.1]
+$$P(X)=\frac{e^{\beta_{0}+\beta_{1}X}}{1+e^{\beta_{0}+\beta_{1}X}}$$
+$$\frac{P(X)}{1-P(X)}=\frac{\frac{e^{\beta_{0}+\beta_{1}X}}{1+e^{\beta_{0}+\beta_{1}X}}}{\frac{1}{1+e^{\beta_{0}+\beta_{1}X}}}=e^{\beta_{0}+\beta_{1}X}$$
+\item[4.2]
+$$P_{k}(x)=\frac{\pi_{k}exp\{-{\frac{(x-\mu_{k})^2}{2\sigma^2}}\}}{\sum_{i=1}^{K}\pi_{i}exp\{-{\frac{(x-\mu_{i})^2}{2\sigma^2}}\}}$$
+\item[4.3]
+\end{itemize}
+\end{document}

@@ -1,0 +1,83 @@
+---
+title: "Assignment6 chapter3&4"
+author: "Sun, Hao-Che"
+date: "2018年10月25日"
+output: word_document
+---
+#3.14
+##(a)
+```{r}
+set.seed(1)
+x1=runif(100)
+x2=0.5*x1+rnorm(100)/10
+y=2+2*x1+0.3*x2+rnorm(100)
+```
+$$y=2+2\times X_{1}+0.3\times X_{2}+\epsilon$$
+The $\beta_{0}=2, \beta_{1}=2, \beta_{2}=0.3$
+```{r}
+cor(x1,x2)
+```
+##(b)
+```{r}
+plot(x1,x2)
+```
+##(c)
+```{r}
+regg=lm(y~x1+x2)
+summary(regg)
+```
+Through coding, the coefficients are close to the real parameters, and we can also discover that except for x2, we can reject the null hypothesis because of its p-value.
+##(d)(e)
+```{r}
+regg2=lm(y~x1)
+summary(regg2)
+```
+```{r}
+regg3=lm(y~x2)
+summary(regg3)
+```
+In two cases, we can reject the null hypothesis because their p-values are extremely small.
+##(f)
+No, because the x1 and x2 have collinearity, so in the condition of (c), the x2 might be replaced by x1, but if we predict by only one predictor, they are all significant.
+##(g)
+```{r}
+x1 = c(x1, 0.1)
+x2 = c(x2, 0.8)
+y = c(y, 6)
+lm(y~x1+x2)
+summary(lm(y~x1+x2))
+```
+```{r}
+par(mfrow=c(2,2))
+plot(lm(y~x1+x2))
+```
+```{r}
+lm(y~x1)
+summary(lm(y~x1))
+```
+```{r}
+par(mfrow=c(2,2))
+plot(lm(y~x1))
+```
+```{r}
+lm(y~x2)
+summary(lm(y~x2))
+```
+```{r}
+par(mfrow=c(2,2))
+plot(lm(y~x2))
+```
+Above of these graphics and models, we can discover that the phenomenon happened in the last questions also happened, and except for y~x1, the other two models don't have apparent outliers, and the first and third model has high-leverage. 
+#3.15
+##(a)
+```{r}
+library(MASS)
+attach(Boston)
+plot(Boston)
+```
+##(b)
+```{r}
+multi=lm(crim~.,data=Boston)
+summary(multi)
+```
+We can discover that zn, dis, rad, black, medv have significant relationship, the hypothesis of these predictors can be rejected.

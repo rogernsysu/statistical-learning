@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}   %加這個就可以設定字體
+\usepackage{xeCJK}       %讓中英文字體分開設置
+\setmainfont{Times New Roman}
+\setCJKmainfont{標楷體} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     %這兩行一定要加，中文才能自動換行
+\usepackage{amsmath, amsthm, amssymb} %引入數學符號的套件，例如實數R、定理Thm...
+\usepackage{graphicx}                 %現在, 假設我們要插入 pic.png 這個圖檔, 使用
+%\title{我是標題}
+%\author{我是作者}
+%\date{} %不要日期
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{color,xcolor}
+\usepackage{listings}
+\usepackage{array,booktabs}   %這三個為表格使用的套件
+\usepackage{textpos}
+\usepackage{float}
+\usepackage{listings}
+
+\title{Statistical learning assignment 7- chapter 4}
+\author{孫浩哲 \hspace{0.7cm} M072040002}
+\date{November 1, 2018}
+\begin{document}
+\maketitle
+\begin{itemize}
+\item[4.4]
+(a)\\
+$10\%$, because we choose\ $10\%$ of the range of\ $X$.\\[2ex]
+(b)\\
+$10\%\times10\%=1\%$\\[2ex]
+(c)\\
+$(0.1)^{100}\times100\%=10^{-98}\%$\\[2ex]
+(d)\\
+As\ $p$ increases, the training observations "near" may decreases in power.\\[2ex]
+(e)\\  
+$p=1, l=10\%^1=0.1$\\[2ex]
+$p=2, l=\sqrt{10\%}\approx0.3162$\\[2ex]
+$p=100, l=\sqrt[100]{10\%}\approx1$
+\item[4.5]
+(a)\\
+We expect QDA is better on training set because QDA is more flexible, and we expect LDA is better on test set because we want to avoid overfitting.\\[2ex]
+(b)\\
+Because it is non-linear, so we prefer QDA on both sets.\\[2ex]
+(c)\\
+Improve, because as the sample size increases, the model may be more complicated, so we need a more flexible model to make a better fit.\\[2ex]
+(d)\\
+False, the QDA may be overfitting if the sample size is small.
+\item[4.6]
+(a)\\
+$$
+P(X)=\frac{e^{(-6+0.05\times40+3.5)}}{1+e^{(-6+0.05\times40+3.5)}}\approx37.75\%
+$$\\[3ex]
+(b)\\
+\begin{align*}
+-6+3.5+0.05\times hours
+&=0\rightarrow hours=50\\
+&(\because\frac{e^0}{1+e^0}=0.5)
+\end{align*}
+\end{itemize}
+\end{document}

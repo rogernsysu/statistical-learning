@@ -1,0 +1,74 @@
+---
+title: ''
+author: "Sun, Hao-Che"
+date: "2018撟<b4>11<e6><9c><88>1<e6>"
+output:
+  word_document: default
+  html_document: default
+---
+#11.
+#(a.)
+```{r}
+library(ISLR)
+summary(Auto)
+```
+```{r}
+attach(Auto)
+mpg01=rep(1,length(mpg))
+mpg01[mpg>median(mpg)]=0
+data=data.frame(Auto,mpg01)
+```
+#(b.)
+```{r}
+plot(data)
+```
+#(c.)
+```{r}
+traset=Auto[c(1:(nrow(Auto)*0.8)),]
+tesset=Auto[-c(1:(nrow(Auto)*0.8)),]
+te=mpg01[-c(1:(nrow(Auto)*0.8))]
+```
+#(d.)
+```{r}
+library(MASS)
+attach(data)
+mo=lda(mpg01 ~ cylinders + weight + displacement + horsepower, data = Auto)
+mop=predict(mo,tesset)
+mean(mop$class!=te)
+```
+#(e.)
+```{r}
+qmo=qda(mpg01 ~ cylinders + weight + displacement + horsepower, data = Auto)
+qmop=predict(qmo,tesset)
+mean(qmop$class!=te)
+```
+#(f.)
+```{r}
+logm=glm(mpg01 ~ cylinders + weight + displacement + horsepower, data = Auto)
+logmop=predict(logm,tesset)
+clas=rep(0,length(te))
+clas[logmop>0.5]=1
+mean(clas!=te)
+```
+#(g.)
+```{r}
+library(class)
+train=cbind(cylinders, weight, displacement, horsepower)[c(1:(nrow(Auto)*0.8)),]
+test=cbind(cylinders, weight, displacement, horsepower)[314:392,]
+tmg01=mpg01[c(1:(nrow(Auto)*0.8))]
+set.seed(1)
+km=knn(train,test,tmg01,k=1)
+mean(te!=km)
+```
+```{r}
+km2=knn(train,test,tmg01,k=100)
+mean(te!=km2)
+```
+```{r}
+km3=knn(train,test,tmg01,k=150)
+mean(te!=km3)
+```
+```{r}
+kmlast=knn(train,test,tmg01,k=200)
+mean(te!=kmlast)
+```
